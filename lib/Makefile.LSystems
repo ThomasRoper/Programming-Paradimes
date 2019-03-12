@@ -740,18 +740,18 @@ lsystems.o: lsystems.cpp lsystems.h \
 ####### Install
 
 install_target: first FORCE
-	@test -d $(INSTALL_ROOT)/usr/lib || mkdir -p $(INSTALL_ROOT)/usr/lib
-	-$(QINSTALL_PROGRAM) $(TARGET) $(INSTALL_ROOT)/usr/lib/$(TARGET)
-	-$(SYMLINK) $(TARGET) $(INSTALL_ROOT)/usr/lib/$(TARGET0)
-	-$(SYMLINK) $(TARGET) $(INSTALL_ROOT)/usr/lib/$(TARGET1)
-	-$(SYMLINK) $(TARGET) $(INSTALL_ROOT)/usr/lib/$(TARGET2)
+	@test -d $(INSTALL_ROOT)/home/s4913455/PP/lib/. || mkdir -p $(INSTALL_ROOT)/home/s4913455/PP/lib/.
+	-$(QINSTALL_PROGRAM) $(TARGET) $(INSTALL_ROOT)/home/s4913455/PP/lib/$(TARGET)
+	-$(SYMLINK) $(TARGET) $(INSTALL_ROOT)/home/s4913455/PP/lib/$(TARGET0)
+	-$(SYMLINK) $(TARGET) $(INSTALL_ROOT)/home/s4913455/PP/lib/$(TARGET1)
+	-$(SYMLINK) $(TARGET) $(INSTALL_ROOT)/home/s4913455/PP/lib/$(TARGET2)
 
 uninstall_target: FORCE
-	-$(DEL_FILE) $(INSTALL_ROOT)/usr/lib/$(TARGET) 
-	 -$(DEL_FILE) $(INSTALL_ROOT)/usr/lib/$(TARGET0) 
-	 -$(DEL_FILE) $(INSTALL_ROOT)/usr/lib/$(TARGET1) 
-	 -$(DEL_FILE) $(INSTALL_ROOT)/usr/lib/$(TARGET2)
-	-$(DEL_DIR) $(INSTALL_ROOT)/usr/lib/ 
+	-$(DEL_FILE) $(INSTALL_ROOT)/home/s4913455/PP/lib/$(TARGET) 
+	 -$(DEL_FILE) $(INSTALL_ROOT)/home/s4913455/PP/lib/$(TARGET0) 
+	 -$(DEL_FILE) $(INSTALL_ROOT)/home/s4913455/PP/lib/$(TARGET1) 
+	 -$(DEL_FILE) $(INSTALL_ROOT)/home/s4913455/PP/lib/$(TARGET2)
+	-$(DEL_DIR) $(INSTALL_ROOT)/home/s4913455/PP/lib/./ 
 
 
 install: install_target  FORCE

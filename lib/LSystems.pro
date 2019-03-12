@@ -30,6 +30,6 @@ HEADERS += \
         lsystems_global.h 
 
 unix {
-    target.path = /usr/lib
+    target.path = .
     INSTALLS += target
 }
