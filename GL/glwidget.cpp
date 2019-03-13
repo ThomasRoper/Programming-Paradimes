@@ -27,14 +27,20 @@ void GLWidget::initializeGL()
 
     //basic libraby test
     LSystems test;
-    std::cout<<test.getAlphabet();
-    std::string basicChange = "And I can now change my Alphabet!\n\n";
-    std::cout<<test.editAlphabet(basicChange);
-    test.addRule("Lucien","Cunt");
-    test.addRule("me","the best there is, plain and simple. I mean, I wake up in the morning and I piss excellence");
-    test.addRule("A","AB");
-    test.editRule(0,"this changed text","right text");
-    test.printRules();
+    test.editAlphabet("A");
+    test.addRule('A',"AB");
+    test.addRule('B',"AA");
+    std::cout<<test.getAlphabet() + "\n";
+
+    test.editAlphabet(test.applyRules());
+    std::cout<<test.getAlphabet() + "\n\n\n";
+
+    test.generateTreeVesions(3);
+
+    for (int i = 0; i< 3; i++)
+    {
+        std::cout<<test.getTreeVersion(i) + "\n";
+    }
 
 
 };
@@ -59,11 +65,11 @@ void GLWidget::paintGL()
 }
 void GLWidget::resizeGL(int w,int h)
 {
-        glViewport(0,0,w,h);
-        glMatrixMode(GL_PROJECTION);
-        glLoadIdentity();
-        gluPerspective(45, (float)w/h, 0.01, 100.0);
-        glMatrixMode(GL_MODELVIEW);
-        glLoadIdentity();
-        gluLookAt(0,0,5,  0,0,0,  0,1,0);
+    glViewport(0,0,w,h);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluPerspective(45, (float)w/h, 0.01, 100.0);
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    gluLookAt(0,0,5,  0,0,0,  0,1,0);
 }

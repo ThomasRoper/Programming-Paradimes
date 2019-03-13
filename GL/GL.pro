@@ -42,5 +42,7 @@ INCLUDEPATH += ../lib
 
 LIBS += -lglut -lGL -lGLU -L../lib -lLSystems
 
+QMAKE_RPATHDIR += ../lib
+
 
 

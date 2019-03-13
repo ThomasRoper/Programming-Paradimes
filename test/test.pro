@@ -7,5 +7,7 @@ SOURCES+= $$PWD/testTests.cpp \
 HEADERS+= $$PWD/test.h
 CONFIG += console
 LIBS += -L/public/devel/lib
+INCLUDEPATH += ../lib
+LIBS+=-lgtest -l gtest_main -L../lib -lLSystems
 
-LIBS+=-lgtest -l gtest_main
+QMAKE_RPATHDIR += ../lib
