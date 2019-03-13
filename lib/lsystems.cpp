@@ -117,7 +117,14 @@ std::string LSystems::getTreeVersion(int version)
     return m_treeVersions[version];
 }
 
-
+float LSystems::getAngle()
+{
+    return m_angle;
+}
+void LSystems::setAngle(float newAngle)
+{
+    m_angle = newAngle;
+}
 
 
 

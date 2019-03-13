@@ -2,9 +2,9 @@ TARGET=TestsProgram
 
 
 SOURCES+= $$PWD/testTests.cpp \
-          $$PWD/test.cpp
 
-HEADERS+= $$PWD/test.h
+
+
 CONFIG += console
 LIBS += -L/public/devel/lib
 INCLUDEPATH += ../lib

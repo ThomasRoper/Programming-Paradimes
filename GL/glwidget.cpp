@@ -29,11 +29,11 @@ void GLWidget::initializeGL()
     LSystems test;
     test.editAlphabet("A");
     test.addRule('A',"AB");
-    test.addRule('B',"AA");
+    test.addRule('B',"BB");
     std::cout<<test.getAlphabet() + "\n";
 
     test.editAlphabet(test.applyRules());
-    std::cout<<test.getAlphabet() + "\n\n\n";
+    std::cout<<test.getAlphabet() + "\n";
 
     test.generateTreeVesions(3);
 

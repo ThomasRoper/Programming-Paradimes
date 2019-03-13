@@ -50,10 +50,8 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = testTests.cpp \
-		test.cpp 
-OBJECTS       = testTests.o \
-		test.o
+SOURCES       = testTests.cpp 
+OBJECTS       = testTests.o
 DIST          = /opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/spec_pre.prf \
 		/opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/common/unix.conf \
 		/opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/common/linux.conf \
@@ -242,8 +240,7 @@ DIST          = /opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/spec_pre.prf \
 		/opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/exceptions.prf \
 		/opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/yacc.prf \
 		/opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/lex.prf \
-		test.pro test.h testTests.cpp \
-		test.cpp
+		test.pro  testTests.cpp
 QMAKE_TARGET  = TestsProgram
 DESTDIR       = 
 TARGET        = TestsProgram
@@ -653,8 +650,7 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents test.h $(DISTDIR)/
-	$(COPY_FILE) --parents testTests.cpp test.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents testTests.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -723,35 +719,8 @@ testTests.o: testTests.cpp ../lib/lsystems.h \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qglobalstatic.h \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qmutex.h \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qnumeric.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qversiontagging.h \
-		test.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o testTests.o testTests.cpp
-
-test.o: test.cpp test.h \
-		../lib/lsystems.h \
-		../lib/lsystems_global.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qglobal.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qconfig.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qtcore-config.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qsystemdetection.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qprocessordetection.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qcompilerdetection.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qtypeinfo.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qsysinfo.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qlogging.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qflags.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qatomic.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qbasicatomic.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qgenericatomic.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qatomic_cxx11.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qatomic_msvc.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qglobalstatic.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qmutex.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qnumeric.h \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qversiontagging.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o test.o test.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o testTests.o testTests.cpp
 
 ####### Install
 

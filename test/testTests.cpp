@@ -1,5 +1,5 @@
 #include "lsystems.h"
-#include "test.h"
+
 #include <gtest/gtest.h>
 
 int main(int argc, char **argv)
@@ -95,4 +95,18 @@ TEST(LSystems,generateNextAlphabet)
     test.generateNextAlphabet();
     ASSERT_EQ(test.getAlphabet(),"AC");
 }
+TEST(LSystems,generatingTreeVersions)
+{
+    LSystems test;
+    test.editAlphabet("A");
+    test.addRule('A',"AC");
+    test.generateTreeVesions(4);
+    ASSERT_EQ(test.getTreeVersion(3),"ACCCC");
+}
 
+TEST(LSystems,settingAngle)
+{
+    LSystems test;
+    test.setAngle(40.0f);
+   ASSERT_EQ(test.getAngle(),40.0f);
+}
