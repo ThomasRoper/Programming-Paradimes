@@ -95,6 +95,7 @@ return newAlpha;
 }
 
 
+
 void LSystems::generateNextAlphabet()
 {
     editAlphabet(applyRules());
@@ -125,7 +126,6 @@ void LSystems::setAngle(float newAngle)
 {
     m_angle = newAngle;
 }
-
 
 
 

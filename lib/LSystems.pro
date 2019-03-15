@@ -23,11 +23,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-        lsystems.cpp
+        lsystems.cpp \
+    turtle.cpp
 
 HEADERS += \
         lsystems.h \
-        lsystems_global.h 
+        lsystems_global.h \ 
+    turtle.h \
+    vec3.h
 
 unix {
     target.path = .

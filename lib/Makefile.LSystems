@@ -50,8 +50,10 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = lsystems.cpp 
-OBJECTS       = lsystems.o
+SOURCES       = lsystems.cpp \
+		turtle.cpp 
+OBJECTS       = lsystems.o \
+		turtle.o
 DIST          = /opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/spec_pre.prf \
 		/opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/common/unix.conf \
 		/opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/common/linux.conf \
@@ -240,7 +242,10 @@ DIST          = /opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/spec_pre.prf \
 		/opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/yacc.prf \
 		/opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/lex.prf \
 		LSystems.pro lsystems.h \
-		lsystems_global.h lsystems.cpp
+		lsystems_global.h \
+		turtle.h \
+		vec3.h lsystems.cpp \
+		turtle.cpp
 QMAKE_TARGET  = LSystems
 DESTDIR       = 
 TARGET        = libLSystems.so.1.0.0
@@ -663,8 +668,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents lsystems.h lsystems_global.h $(DISTDIR)/
-	$(COPY_FILE) --parents lsystems.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents lsystems.h lsystems_global.h turtle.h vec3.h $(DISTDIR)/
+	$(COPY_FILE) --parents lsystems.cpp turtle.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -736,6 +741,32 @@ lsystems.o: lsystems.cpp lsystems.h \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qnumeric.h \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qversiontagging.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o lsystems.o lsystems.cpp
+
+turtle.o: turtle.cpp turtle.h \
+		lsystems.h \
+		lsystems_global.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qglobal.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qconfig.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qtcore-config.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qsystemdetection.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qprocessordetection.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qcompilerdetection.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qtypeinfo.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qsysinfo.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qlogging.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qflags.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qatomic.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qbasicatomic.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qgenericatomic.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qatomic_msvc.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qglobalstatic.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qmutex.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qnumeric.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qversiontagging.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o turtle.o turtle.cpp
 
 ####### Install
 

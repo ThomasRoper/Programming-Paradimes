@@ -40,9 +40,10 @@ FORMS += \
 INCLUDEPATH += ../lib
 
 
-LIBS += -lglut -lGL -lGLU -L../lib -lLSystems
+LIBS += -lglut -lGL -lGLU -lglfw3 -L../lib -lLSystems
 
 QMAKE_RPATHDIR += ../lib
+
 
 
 

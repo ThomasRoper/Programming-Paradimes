@@ -1,4 +1,5 @@
 #include "lsystems.h"
+#include "turtle.h"
 
 #include <gtest/gtest.h>
 
@@ -109,4 +110,11 @@ TEST(LSystems,settingAngle)
     LSystems test;
     test.setAngle(40.0f);
    ASSERT_EQ(test.getAngle(),40.0f);
+}
+
+TEST(turtle, runTurtle)
+{
+
+
+
 }
