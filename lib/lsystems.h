@@ -35,11 +35,14 @@ public:
 
 
 
+
+
 private:
     std::string m_alphabet;
-    std::vector<std::pair <char,std::string>> rules ;
+    std::vector<std::pair <char,std::string>> m_rules;
     std::vector<std::string> m_treeVersions;
     float m_angle;
+
 
 
 

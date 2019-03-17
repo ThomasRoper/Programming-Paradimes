@@ -6,6 +6,7 @@
 #include <QTimer>
 #include <camera.h>
 #include <lsystems.h>
+#include <system.h>
 class GLWidget : public QGLWidget
 {
     Q_OBJECT
@@ -19,7 +20,7 @@ public:
 private:
        QTimer timer;
        //auto ground = glutSolidCube(2.0);
-        LSystems test;
+
 };
 
 #endif // GLWIDGET_H

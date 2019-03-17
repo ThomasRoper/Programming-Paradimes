@@ -1,4 +1,5 @@
 #include "lsystems.h"
+#include "turtle.h"
 
 LSystems::LSystems()
 {
@@ -24,32 +25,32 @@ void LSystems::setAlphabet(std::string newAlphabet)
 
 void LSystems::addRule(char lvalue, std::string rvalue)
 {
-    rules.push_back({lvalue,rvalue});
+    m_rules.push_back({lvalue,rvalue});
 }
 
 void LSystems::editRule(int ruleNum, char lvalue, std::string rvalue)
 {
-    if (ruleNum <= (rules.size() - 1))
+    if (ruleNum <= (m_rules.size() - 1))
     {
-        rules[ruleNum].first = lvalue;
-        rules[ruleNum].second = rvalue;
+        m_rules[ruleNum].first = lvalue;
+        m_rules[ruleNum].second = rvalue;
     }
 }
 
 void LSystems::removeRule(int ruleNum)
 {
-    if (ruleNum <= (rules.size() - 1))
+    if (ruleNum <= (m_rules.size() - 1))
     {
-        rules[ruleNum] = rules.back();
-        rules.pop_back();
+        m_rules[ruleNum] = m_rules.back();
+        m_rules.pop_back();
     }
 }
 
 std::string LSystems::seeRule(int ruleNum)
 {
 
-    std::string lvalue; lvalue += rules[ruleNum].first;
-    std::string rvalue = rules[ruleNum].second;
+    std::string lvalue; lvalue += m_rules[ruleNum].first;
+    std::string rvalue = m_rules[ruleNum].second;
 
     std::string rule = lvalue + " = " + rvalue + "\n";
 
@@ -58,7 +59,7 @@ std::string LSystems::seeRule(int ruleNum)
 
 void LSystems::printRules()
 {
-    for (int i = 0; i< rules.size(); i++)
+    for (int i = 0; i< m_rules.size(); i++)
     {
 
         std::cout<<seeRule(i);
@@ -74,11 +75,11 @@ std::string LSystems::applyRules()
     for(char& c : Alpha)
     {
         found = false;
-        for (int i = 0; i< rules.size(); i++)
+        for (int i = 0; i< m_rules.size(); i++)
         {
-            if (c == rules[i].first)
+            if (c == m_rules[i].first)
             {
-                newAlpha += rules[i].second;
+                newAlpha += m_rules[i].second;
                 found = true;
             }
 
@@ -126,6 +127,8 @@ void LSystems::setAngle(float newAngle)
 {
     m_angle = newAngle;
 }
+
+
 
 
 

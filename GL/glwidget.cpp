@@ -3,6 +3,7 @@
 #include <camera.h>
 #include "lsystems.h"
 #include "turtle.h"
+#include "system.h"
 
 #define WIDTH 350
 #define HEIGHT 350
@@ -30,6 +31,7 @@ void GLWidget::initializeGL()
 
     //test.editAlphabet("F");
     //test.addRule('F',"FF+[+F-F-F]-[-F+F+F]");
+    /*
     test.editAlphabet("FX");
     test.addRule('X',"[-FX]+FX");
 
@@ -38,10 +40,10 @@ void GLWidget::initializeGL()
     test.editAlphabet(test.applyRules());
     std::cout<<test.getAlphabet() + "\n";
     test.editAlphabet(test.applyRules());
+
     test.editAlphabet(test.applyRules());
     test.editAlphabet(test.applyRules());
-    test.editAlphabet(test.applyRules());
-    test.editAlphabet(test.applyRules());
+    */
 
 };
 void GLWidget::paintGL()
@@ -69,9 +71,10 @@ void GLWidget::paintGL()
 
     glPushMatrix();
     glTranslatef(0.0,-1.0,0.0);
-    auto tust = new turtle;
-    tust->setLSystem(& test);
-    tust->runTurtle();
+    turtlesystem test;
+    test.chooseTemplate(0);
+    test.makeTree();
+    test.drawTree();
     glPopMatrix();
 
 }

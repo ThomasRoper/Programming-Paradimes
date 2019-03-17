@@ -24,13 +24,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         lsystems.cpp \
-    turtle.cpp
+    turtle.cpp \
+    system.cpp
 
 HEADERS += \
         lsystems.h \
         lsystems_global.h \ 
     turtle.h \
-    vec3.h
+    vec3.h \
+    system.h
 
 unix {
     target.path = .

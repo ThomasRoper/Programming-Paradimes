@@ -1,12 +1,13 @@
 #include "lsystems.h"
 #include "turtle.h"
+#include "system.h"
 
 #include <gtest/gtest.h>
 
 int main(int argc, char **argv)
 {
-  testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
+    testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
 }
 
 
@@ -109,12 +110,95 @@ TEST(LSystems,settingAngle)
 {
     LSystems test;
     test.setAngle(40.0f);
-   ASSERT_EQ(test.getAngle(),40.0f);
+    ASSERT_EQ(test.getAngle(),40.0f);
 }
 
-TEST(turtle, runTurtle)
+TEST(turtle, runTurtleFoward)
 {
+    LSystems test;
+    turtle tust;
+    test.editAlphabet("F");
+    test.addRule('F',"FF");
+    test.editAlphabet(test.applyRules());
+    tust.setAngle(30.0f);
+    tust.setLength(0.5f);
+    tust.setLSystem(& test);
+    tust.runTurtle();
+
+    ASSERT_EQ(tust.getMessage(),"moved foward");
+}
+TEST(turtle, runTurtleRotatePos)
+{
+    LSystems test;
+    turtle tust;
+    test.editAlphabet("+");
+    test.addRule('+',"++");
+    test.editAlphabet(test.applyRules());
+    tust.setAngle(30.0f);
+    tust.setLength(0.5f);
+    tust.setLSystem(& test);
+    tust.runTurtle();
+    ASSERT_EQ(tust.getMessage(),"rotated to the right");
+}
+TEST(turtle, runTurtleRotateNeg)
+{
+    LSystems test;
+    turtle tust;
+    test.editAlphabet("-");
+    test.addRule('-',"--");
+    test.editAlphabet(test.applyRules());
+    tust.setAngle(30.0f);
+    tust.setLength(0.5f);
+    tust.setLSystem(& test);
+    tust.runTurtle();
+    ASSERT_EQ(tust.getMessage(),"rotated to the left");
+}
+TEST(turtle, runTurtlePush)
+{
+    LSystems test;
+    turtle tust;
+    test.editAlphabet("[");
+    test.addRule('[',"[[");
+    test.editAlphabet(test.applyRules());
+    tust.setAngle(30.0f);
+    tust.setLength(0.5f);
+    tust.setLSystem(& test);
+    tust.runTurtle();
+    ASSERT_EQ(tust.getMessage(),"pushs current transforms");
+}
+TEST(turtle, runTurtlePop)
+{
+    LSystems test;
+
+    turtle tust;
+    test.editAlphabet("]");
+    test.addRule(']',"]]");
+    test.editAlphabet(test.applyRules());
+    tust.setAngle(30.0f);
+    tust.setLength(0.5f);
+    tust.setLSystem(& test);
+    tust.runTurtle();
+    ASSERT_EQ(tust.getMessage(),"pops current transforms");
+}
+TEST(turtlesystem, construct)
+{
+    turtlesystem test;
+    std::string name = test.getName();
+    ASSERT_EQ(name,"basic_Tree");
+}
+TEST(turtlesystem, constructAndChoose)
+{
+    turtlesystem test;
+    test.chooseTemplate(1);
+    std::string name = test.getName();
+    ASSERT_EQ(name,"Square_Tree");
+}
 
 
-
+TEST(turtlesystem, MakeTree)
+{
+    turtlesystem test;
+    test.chooseTemplate(1);
+    test.makeTree();
+    ASSERT_EQ(test.getName(),"Tasic_Tree");
 }

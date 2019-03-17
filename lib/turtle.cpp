@@ -18,19 +18,35 @@ void turtle::applyRules(char x)
     switch (x) {
     case 'F':
         moveFoward();
-        std::cout<<"moved foward\n";
+        m_message = "moved foward";
         break;
     case '+':
-       rotatePos();
+        rotatePos();
+        m_message = "rotated to the right";
         break;
     case '-':
-       rotateNeg();
+        rotateNeg();
+        m_message = "rotated to the left";
         break;
     case '[':
-       push();
+        push();
+        m_message = "pushs current transforms";
         break;
     case ']':
-       pop();
+        pop();
+        m_message = "pops current transforms";
+        break;
+    case '|':
+        reverse();
+        m_message = "reverses the current direction";
+        break;
+    case '>':
+        lineLengthPos();
+        m_message = "Multiply the line length by scaler";
+        break;
+    case '<':
+        lineLengthNeg();
+        m_message = "Divide the line length by scaler";
         break;
 
     default:
@@ -43,10 +59,10 @@ void turtle::applyRules(char x)
 void turtle::moveFoward()
 {
     glBegin(GL_LINES);
-        glVertex3f(0.0,0.0,0.0);
-        glVertex3f(0.0,m_length,0.0);
+    glVertex3f(0.0,0.0,0.0);
+    glVertex3f(0.0,m_length*m_scale,0.0);
     glEnd();
-    glTranslatef(0.0,m_length,0.0);
+    glTranslatef(0.0,m_length*m_scale,0.0);
 
 }
 void turtle::rotateNeg()
@@ -65,6 +81,23 @@ void turtle::pop()
 {
     glPopMatrix();
 }
+
+void turtle::reverse()
+{
+    glRotatef(180.0f,0.0f,0.0f,1.0f);
+}
+void turtle::lineLengthPos()
+{
+    m_scale *= 2;
+}
+void turtle::lineLengthNeg()
+{
+    m_scale /= 2;
+}
+
+
+
+
 void turtle::setAngle(float angle)
 {
     m_angle = angle;
@@ -74,4 +107,16 @@ void turtle::setAngle(float angle)
 void turtle::setLSystem(LSystems * _lsystem)
 {
     m_lsystem=_lsystem;
+}
+
+void turtle::setLength(float length)
+{
+    m_length = length;
+
+
+}
+
+std::string turtle::getMessage()
+{
+    return m_message;
 }

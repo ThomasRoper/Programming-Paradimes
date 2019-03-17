@@ -753,6 +753,11 @@ moc_glwidget.cpp: /opt/Qt5.11.1/5.11.1/gcc_64/include/QtOpenGL/QGLWidget \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qtimer.h \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qbasictimer.h \
 		camera.h \
+		../lib/lsystems.h \
+		/home/s4913455/PP/lib/lsystems_global.h \
+		../lib/system.h \
+		../lib/turtle.h \
+		../lib/vec3.h \
 		glwidget.h \
 		moc_predefs.h \
 		/opt/Qt5.11.1/5.11.1/gcc_64/bin/moc
@@ -887,7 +892,12 @@ ui_mainwindow.h: mainwindow.ui \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/QTimer \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qtimer.h \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qbasictimer.h \
-		camera.h
+		camera.h \
+		../lib/lsystems.h \
+		/home/s4913455/PP/lib/lsystems_global.h \
+		../lib/system.h \
+		../lib/turtle.h \
+		../lib/vec3.h
 	/opt/Qt5.11.1/5.11.1/gcc_64/bin/uic mainwindow.ui -o ui_mainwindow.h
 
 compiler_yacc_decl_make_all:
@@ -1161,7 +1171,12 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/QTimer \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qtimer.h \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qbasictimer.h \
-		camera.h
+		camera.h \
+		../lib/lsystems.h \
+		/home/s4913455/PP/lib/lsystems_global.h \
+		../lib/system.h \
+		../lib/turtle.h \
+		../lib/vec3.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o mainwindow.cpp
 
 glwidget.o: glwidget.cpp glwidget.h \
@@ -1286,7 +1301,10 @@ glwidget.o: glwidget.cpp glwidget.h \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qbasictimer.h \
 		camera.h \
 		../lib/lsystems.h \
-		/home/s4913455/PP/lib/lsystems_global.h
+		/home/s4913455/PP/lib/lsystems_global.h \
+		../lib/system.h \
+		../lib/turtle.h \
+		../lib/vec3.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o glwidget.o glwidget.cpp
 
 camera.o: camera.cpp camera.h
