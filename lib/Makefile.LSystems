@@ -52,10 +52,10 @@ OBJECTS_DIR   = ./
 
 SOURCES       = lsystems.cpp \
 		turtle.cpp \
-		system.cpp 
+		turtlesystem.cpp 
 OBJECTS       = lsystems.o \
 		turtle.o \
-		system.o
+		turtlesystem.o
 DIST          = /opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/spec_pre.prf \
 		/opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/common/unix.conf \
 		/opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/common/linux.conf \
@@ -247,9 +247,9 @@ DIST          = /opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/spec_pre.prf \
 		lsystems_global.h \
 		turtle.h \
 		vec3.h \
-		system.h lsystems.cpp \
+		turtlesystem.h lsystems.cpp \
 		turtle.cpp \
-		system.cpp
+		turtlesystem.cpp
 QMAKE_TARGET  = LSystems
 DESTDIR       = 
 TARGET        = libLSystems.so.1.0.0
@@ -672,8 +672,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents lsystems.h lsystems_global.h turtle.h vec3.h system.h $(DISTDIR)/
-	$(COPY_FILE) --parents lsystems.cpp turtle.cpp system.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents lsystems.h lsystems_global.h turtle.h vec3.h turtlesystem.h $(DISTDIR)/
+	$(COPY_FILE) --parents lsystems.cpp turtle.cpp turtlesystem.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -743,7 +743,9 @@ lsystems.o: lsystems.cpp lsystems.h \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qglobalstatic.h \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qmutex.h \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qnumeric.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qversiontagging.h
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qversiontagging.h \
+		turtle.h \
+		vec3.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o lsystems.o lsystems.cpp
 
 turtle.o: turtle.cpp turtle.h \
@@ -773,7 +775,7 @@ turtle.o: turtle.cpp turtle.h \
 		vec3.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o turtle.o turtle.cpp
 
-system.o: system.cpp system.h \
+turtlesystem.o: turtlesystem.cpp turtlesystem.h \
 		turtle.h \
 		lsystems.h \
 		lsystems_global.h \
@@ -799,7 +801,7 @@ system.o: system.cpp system.h \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qnumeric.h \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qversiontagging.h \
 		vec3.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o system.o system.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o turtlesystem.o turtlesystem.cpp
 
 ####### Install
 

@@ -7,9 +7,22 @@ turtle::turtle()
 void turtle::runTurtle()
 {
     std::string alphabetCopy = m_lsystem->getAlphabet();
+    for (int i = 0; i< m_scale.size(); i++)
+    {
+    m_scale.pop_back();
+    }
+
+
     for(char& c : alphabetCopy)
     {
         applyRules(c);
+
+        std::string characterLine;
+        characterLine = "\nLength = " + std::to_string(m_length) + ".\n";
+         std::cout<<characterLine;
+
+
+
     }
 
 }
@@ -19,6 +32,10 @@ void turtle::applyRules(char x)
     case 'F':
         moveFoward();
         m_message = "moved foward";
+        break;
+    case 'f':
+        moveFowardNotDraw();
+        m_message = "moved foward without drawing";
         break;
     case '+':
         rotatePos();
@@ -52,7 +69,7 @@ void turtle::applyRules(char x)
     default:
         std::string y;
         y += x;
-        std::cout<<"couldn't find character to match: " + y + " \n";
+         m_message = "couldn't find character to match: " + y + " \n";
         break;
     }
 }
@@ -60,9 +77,15 @@ void turtle::moveFoward()
 {
     glBegin(GL_LINES);
     glVertex3f(0.0,0.0,0.0);
-    glVertex3f(0.0,m_length*m_scale,0.0);
+    glVertex3f(0.0,m_length/**m_scale[m_scale.size()]*/,0.0);
     glEnd();
-    glTranslatef(0.0,m_length*m_scale,0.0);
+    glTranslatef(0.0,m_length,0.0);
+    //if (m_scale != 1.0f)m_scale = 1.0f;
+
+}
+void turtle::moveFowardNotDraw()
+{
+    glTranslatef(0.0,m_length,0.0);
 
 }
 void turtle::rotateNeg()
@@ -75,11 +98,15 @@ void turtle::rotatePos()
 }
 void turtle::push()
 {
-    glPushMatrix();
+    glPushMatrix();    
+    m_scale.push_back(m_length);
+
 }
 void turtle::pop()
 {
     glPopMatrix();
+    m_length = m_scale.back();
+    m_scale.pop_back();
 }
 
 void turtle::reverse()
@@ -88,14 +115,17 @@ void turtle::reverse()
 }
 void turtle::lineLengthPos()
 {
-    m_scale *= 2;
+    m_length /= m_scaleFactor;
 }
 void turtle::lineLengthNeg()
 {
-    m_scale /= 2;
+    m_length *= m_scaleFactor;
 }
 
-
+void turtle::flipRotate()
+{
+    m_angle = -m_angle;
+}
 
 
 void turtle::setAngle(float angle)

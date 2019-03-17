@@ -19,6 +19,8 @@ private:
 
         LSystems Tree;
         turtle Turtle;
+
+        float scaleFactor;
         int version;
         std::string name;
         float length;

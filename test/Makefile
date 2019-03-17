@@ -721,7 +721,8 @@ testTests.o: testTests.cpp ../lib/lsystems.h \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qnumeric.h \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qversiontagging.h \
 		../lib/turtle.h \
-		../lib/vec3.h
+		../lib/vec3.h \
+		../lib/turtlesystem.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o testTests.o testTests.cpp
 
 ####### Install

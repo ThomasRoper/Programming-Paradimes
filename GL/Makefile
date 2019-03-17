@@ -755,7 +755,7 @@ moc_glwidget.cpp: /opt/Qt5.11.1/5.11.1/gcc_64/include/QtOpenGL/QGLWidget \
 		camera.h \
 		../lib/lsystems.h \
 		/home/s4913455/PP/lib/lsystems_global.h \
-		../lib/system.h \
+		../lib/turtlesystem.h \
 		../lib/turtle.h \
 		../lib/vec3.h \
 		glwidget.h \
@@ -895,7 +895,7 @@ ui_mainwindow.h: mainwindow.ui \
 		camera.h \
 		../lib/lsystems.h \
 		/home/s4913455/PP/lib/lsystems_global.h \
-		../lib/system.h \
+		../lib/turtlesystem.h \
 		../lib/turtle.h \
 		../lib/vec3.h
 	/opt/Qt5.11.1/5.11.1/gcc_64/bin/uic mainwindow.ui -o ui_mainwindow.h
@@ -1133,50 +1133,7 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qtouchdevice.h \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qtabwidget.h \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qicon.h \
-		ui_mainwindow.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/QVariant \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QApplication \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qapplication.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qcoreapplication.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qeventloop.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qguiapplication.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qinputmethod.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QHBoxLayout \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qboxlayout.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qlayout.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qlayoutitem.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qgridlayout.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QPushButton \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qpushbutton.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qabstractbutton.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QSpacerItem \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QVBoxLayout \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QWidget \
-		glwidget.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtOpenGL/QGLWidget \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtOpenGL/qgl.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qopengl.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qt_windows.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qopengles2ext.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qopenglext.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qpaintengine.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qpainter.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qtextoption.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qpen.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtOpenGL/qglcolormap.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtOpenGL/qtopenglglobal.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/QSurfaceFormat \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qsurfaceformat.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/QTimer \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qtimer.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qbasictimer.h \
-		camera.h \
-		../lib/lsystems.h \
-		/home/s4913455/PP/lib/lsystems_global.h \
-		../lib/system.h \
-		../lib/turtle.h \
-		../lib/vec3.h
+		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o mainwindow.cpp
 
 glwidget.o: glwidget.cpp glwidget.h \
@@ -1302,7 +1259,7 @@ glwidget.o: glwidget.cpp glwidget.h \
 		camera.h \
 		../lib/lsystems.h \
 		/home/s4913455/PP/lib/lsystems_global.h \
-		../lib/system.h \
+		../lib/turtlesystem.h \
 		../lib/turtle.h \
 		../lib/vec3.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o glwidget.o glwidget.cpp

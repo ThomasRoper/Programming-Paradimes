@@ -13,6 +13,7 @@ public:
     void applyRules(char x);
 
     void moveFoward();
+    void moveFowardNotDraw();
     void rotateNeg();
     void rotatePos();
     void push();
@@ -20,11 +21,13 @@ public:
     void reverse();
     void lineLengthPos();
     void lineLengthNeg();
+    void flipRotate();
 
 
     void setAngle(float angle);
     void setLSystem(LSystems * _lsystem);
     void setLength(float length);
+    void setScaleFactor(float scaleAmount){m_scaleFactor = scaleAmount;}
 
 
     std::string getMessage();
@@ -34,7 +37,9 @@ public:
 private:
     float m_length;
     float m_angle;
-    float m_scale = 1.0f;
+    std::vector<float> m_scale;
+    float m_scaleFactor = 1.36f;
+
     LSystems * m_lsystem;
     Vec3 start = Vec3(0.0f,-1.0f,0.0f);
     Vec3 pos;
