@@ -54,7 +54,7 @@ void GLWidget::initializeGL()
     trees[2].makeTree();
     trees[3].chooseTemplate(3);
     trees[3].makeTree();
-    trees[4].chooseTemplate(4);
+    trees[4].chooseTemplate(12);
     trees[4].makeTree();
 
 
@@ -83,14 +83,14 @@ void GLWidget::paintGL()
 
 
     glPushMatrix();
-    glTranslatef(-1.0,-1.0,-1.0);
+    glTranslatef(-0.85,-1.0,-0.85);
     glRotatef(90, 1.0,0.0,0.0);
     glRotatef(45, 0.0,0.0,1.0);
     example.drawTree();
     glPopMatrix();
 
 
-
+/*
     glPushMatrix();
     glTranslatef(0.0,-1.0,0.0);
     glTranslatef(-0.8,0.0,-0.8);
@@ -113,7 +113,16 @@ void GLWidget::paintGL()
     glTranslatef(0.0,-1.0,0.0);
     glTranslatef(0.8,0.0,0.8);
     trees[3].drawTree();
+    glPopMatrix();*/
+
+    glPushMatrix();
+    glTranslatef(0.0,-1.0,0.0);
+    //glTranslatef(0.8,0.0,0.8);
+    glLineWidth(2.0f);
+    trees[4].drawTree();
     glPopMatrix();
+
+
 
 }
 void GLWidget::resizeGL(int w,int h)

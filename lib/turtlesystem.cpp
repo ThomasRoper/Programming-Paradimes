@@ -30,7 +30,7 @@ void turtlesystem::chooseTemplate(int choice)
         name = "Wavy Bush";
         length = 0.05f;
         angle = 20.0f;
-        version = 4;
+        version = 3;
         scaleFactor = 1.5;
         axiom = "VZFFF";
         rules.push_back({'V',"[+++W][---W]YV"});
@@ -43,7 +43,7 @@ void turtlesystem::chooseTemplate(int choice)
         name = "Branch";
         length = 0.01f;
         angle = 20.0f;
-        version = 5;
+        version = 4;
         scaleFactor = 1.5;
         axiom = "X";
         rules.push_back({'F',"FF"});
@@ -54,16 +54,16 @@ void turtlesystem::chooseTemplate(int choice)
         name = "Triangle";
         length = 0.1f;
         angle = 120.0f;
-        version = 2;
+        version = 1;
         scaleFactor = 1.5;
         axiom = "F+F+F";
         rules.push_back({'F',"F-F+F"});
         break;
     case 4:
         name = "Square Sierpinski";
-        length = 0.1f;
+        length = 0.2f;
         angle = 90.0f;
-        version = 2;
+        version = 1;
         scaleFactor = 1.5;
         axiom = "F+XF+F+XF";
         rules.push_back({'X',"XF-F+F-XF+F+XF-F+F-X"});
@@ -137,7 +137,7 @@ void turtlesystem::chooseTemplate(int choice)
         break;
 
     case 12:
-        name = "multiple";
+        name = "The hard scaler one";
         length = 0.5f;
         angle = 40.0f;
         version = 8;

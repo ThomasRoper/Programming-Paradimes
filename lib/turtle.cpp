@@ -17,9 +17,7 @@ void turtle::runTurtle()
     {
         applyRules(c);
 
-        std::string characterLine;
-        characterLine = "\nLength = " + std::to_string(m_length) + ".\n";
-         std::cout<<characterLine;
+
 
 
 
