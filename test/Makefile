@@ -698,30 +698,7 @@ compiler_clean: compiler_moc_predefs_clean
 ####### Compile
 
 testTests.o: testTests.cpp ../lib/lsystems.h \
-		../lib/lsystems_global.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qglobal.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qconfig.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qtcore-config.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qsystemdetection.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qprocessordetection.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qcompilerdetection.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qtypeinfo.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qsysinfo.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qlogging.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qflags.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qatomic.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qbasicatomic.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qgenericatomic.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qatomic_cxx11.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qatomic_msvc.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qglobalstatic.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qmutex.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qnumeric.h \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qversiontagging.h \
 		../lib/turtle.h \
-		../lib/vec3.h \
 		../lib/turtlesystem.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o testTests.o testTests.cpp
 

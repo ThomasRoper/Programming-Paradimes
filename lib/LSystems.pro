@@ -29,9 +29,7 @@ SOURCES += \
 
 HEADERS += \
         lsystems.h \
-        lsystems_global.h \ 
     turtle.h \
-    vec3.h \
     turtlesystem.h
 
 unix {

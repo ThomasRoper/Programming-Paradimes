@@ -1,5 +1,4 @@
 #include "turtle.h"
-#include <GL/glut.h>
 turtle::turtle()
 {
 
@@ -7,26 +6,22 @@ turtle::turtle()
 void turtle::runTurtle()
 {
     std::string alphabetCopy = m_lsystem->getAlphabet();
+    //resets the line length scaling for the < and > operators
     for (int i = 0; i< m_scale.size(); i++)
     {
     m_scale.pop_back();
     }
 
-
+    //goes through every letter in the alphabet and calls applyrules on each one
     for(char& c : alphabetCopy)
     {
         applyRules(c);
-
-
-
-
-
     }
 
 }
-void turtle::applyRules(char x)
+void turtle::applyRules(char _character)
 {
-    switch (x) {
+    switch (_character) {
     case 'F':
         moveFoward();
         m_message = "moved foward";
@@ -53,7 +48,7 @@ void turtle::applyRules(char x)
         break;
     case '|':
         reverse();
-        m_message = "reverses the current direction";
+        m_message = "reverses the current rotation direction";
         break;
     case '>':
         lineLengthPos();
@@ -66,11 +61,12 @@ void turtle::applyRules(char x)
 
     default:
         std::string y;
-        y += x;
-         m_message = "couldn't find character to match: " + y + " \n";
+        y += _character;
+         m_message = "couldn't find character to match: " + y;
         break;
     }
 }
+
 void turtle::moveFoward()
 {
     glBegin(GL_LINES);
@@ -81,70 +77,20 @@ void turtle::moveFoward()
     //if (m_scale != 1.0f)m_scale = 1.0f;
 
 }
-void turtle::moveFowardNotDraw()
-{
-    glTranslatef(0.0,m_length,0.0);
 
-}
-void turtle::rotateNeg()
-{
-    glRotatef(m_angle,0.0f,0.0f,1.0f);
-}
-void turtle::rotatePos()
-{
-    glRotatef(-m_angle,0.0f,0.0f,1.0f);
-}
 void turtle::push()
 {
+    //pushs the turtles current translation so it can go back to the position after drawing a branch
     glPushMatrix();    
     m_scale.push_back(m_length);
-
 }
 void turtle::pop()
 {
+    //pops the current translation so that the turtle is able to draw from the stem
     glPopMatrix();
     m_length = m_scale.back();
     m_scale.pop_back();
 }
 
-void turtle::reverse()
-{
-    glRotatef(180.0f,0.0f,0.0f,1.0f);
-}
-void turtle::lineLengthPos()
-{
-    m_length /= m_scaleFactor;
-}
-void turtle::lineLengthNeg()
-{
-    m_length *= m_scaleFactor;
-}
-
-void turtle::flipRotate()
-{
-    m_angle = -m_angle;
-}
 
 
-void turtle::setAngle(float angle)
-{
-    m_angle = angle;
-}
-
-
-void turtle::setLSystem(LSystems * _lsystem)
-{
-    m_lsystem=_lsystem;
-}
-
-void turtle::setLength(float length)
-{
-    m_length = length;
-
-
-}
-
-std::string turtle::getMessage()
-{
-    return m_message;
-}

@@ -1,6 +1,6 @@
 #include "glwidget.h"
 #include <GL/glut.h>
-#include <camera.h>
+
 #include "lsystems.h"
 #include "turtle.h"
 #include "turtlesystem.h"
@@ -44,18 +44,10 @@ void GLWidget::initializeGL()
     test.editAlphabet(test.applyRules());
     test.editAlphabet(test.applyRules());
     */
-    example.chooseTemplate(4);
-    example.makeTree();
-    trees[0].chooseTemplate(0);
-    trees[0].makeTree();
-    trees[1].chooseTemplate(1);
-    trees[1].makeTree();
-    trees[2].chooseTemplate(2);
-    trees[2].makeTree();
-    trees[3].chooseTemplate(3);
-    trees[3].makeTree();
-    trees[4].chooseTemplate(12);
-    trees[4].makeTree();
+
+
+    tree.chooseTemplate(16);
+    tree.makeTree();
 
 
 };
@@ -86,7 +78,7 @@ void GLWidget::paintGL()
     glTranslatef(-0.85,-1.0,-0.85);
     glRotatef(90, 1.0,0.0,0.0);
     glRotatef(45, 0.0,0.0,1.0);
-    example.drawTree();
+    //example.drawTree();
     glPopMatrix();
 
 
@@ -118,8 +110,8 @@ void GLWidget::paintGL()
     glPushMatrix();
     glTranslatef(0.0,-1.0,0.0);
     //glTranslatef(0.8,0.0,0.8);
-    glLineWidth(2.0f);
-    trees[4].drawTree();
+    glLineWidth(1.2f);
+    tree.drawTree();
     glPopMatrix();
 
 

@@ -10,18 +10,18 @@ turtlesystem::turtlesystem()
     rules.push_back({'F',"FF+[+F-F-F]-[-F+F+F]"});
 }
 
-void turtlesystem::chooseTemplate(int choice)
+void turtlesystem::chooseTemplate(int _choice)
 {
     for (int i = 0; i < rules.size(); i++)
     {
     rules.pop_back();
     }
-    switch (choice) {
+    switch (_choice) {
     case 0:
         name = "Basic Tree";
         length = 0.05f;
         angle = 22.5f;
-        version = 2;
+        version = 3;
         scaleFactor = 1.5;
         axiom = "F";
         rules.push_back({'F',"FF+[+F-F-F]-[-F+F+F]"});
@@ -30,7 +30,7 @@ void turtlesystem::chooseTemplate(int choice)
         name = "Wavy Bush";
         length = 0.05f;
         angle = 20.0f;
-        version = 3;
+        version = 6;
         scaleFactor = 1.5;
         axiom = "VZFFF";
         rules.push_back({'V',"[+++W][---W]YV"});
@@ -41,7 +41,7 @@ void turtlesystem::chooseTemplate(int choice)
         break;
     case 2:
         name = "Branch";
-        length = 0.01f;
+        length = 0.05f;
         angle = 20.0f;
         version = 4;
         scaleFactor = 1.5;
@@ -54,7 +54,7 @@ void turtlesystem::chooseTemplate(int choice)
         name = "Triangle";
         length = 0.1f;
         angle = 120.0f;
-        version = 1;
+        version = 3;
         scaleFactor = 1.5;
         axiom = "F+F+F";
         rules.push_back({'F',"F-F+F"});
@@ -63,7 +63,7 @@ void turtlesystem::chooseTemplate(int choice)
         name = "Square Sierpinski";
         length = 0.2f;
         angle = 90.0f;
-        version = 1;
+        version = 4;
         scaleFactor = 1.5;
         axiom = "F+XF+F+XF";
         rules.push_back({'X',"XF-F+F-XF+F+XF-F+F-X"});
@@ -98,9 +98,9 @@ void turtlesystem::chooseTemplate(int choice)
         break;
     case 8:
         name = "Pentaplexity";
-        length = 0.1f;
+        length = 0.05f;
         angle = 36.0f;
-        version = 3;
+        version = 2;
         scaleFactor = 1.5;
         axiom = "F++F++F++F++F";
         rules.push_back({'F',"F++F++F|F-F++F"});
@@ -138,9 +138,9 @@ void turtlesystem::chooseTemplate(int choice)
 
     case 12:
         name = "The hard scaler one";
-        length = 0.5f;
+        length = 0.7f;
         angle = 40.0f;
-        version = 8;
+        version = 9;
         scaleFactor = 1.36;
         axiom = "FX";
         rules.push_back({'X',">[-FX]+FX"});
@@ -198,6 +198,26 @@ void turtlesystem::chooseTemplate(int choice)
         rules.push_back({'u',"fFFF[++p]"});
         rules.push_back({'v',"Fv"});
         break;
+    case 16:
+        name = "Kolam";
+        length = 0.1f;
+        angle = 45.0f;
+        version = 5;
+        axiom = "-D--D";
+        rules.push_back({'A',"F++FFFF--F--FFFF++F++FFFF--F"});
+        rules.push_back({'B',"F--FFFF++F++FFFF--F--FFFF++F"});
+        rules.push_back({'C',"BFA--BFA"});
+        rules.push_back({'D',"CFC--CFC"});
+        break;
+    case 17:
+        name = "Mango Leaf";
+        length = 0.1f;
+        angle = 60.0f;
+        version = 8;
+        axiom = "Y---Y";
+        rules.push_back({'X',"{F-F}{F-F}--[--X]{F-F}{F-F}--{F-F}{F-F}--"});
+        rules.push_back({'Y',"f-F+X+F-fY"});
+        break;
     }
 
 }
@@ -205,29 +225,35 @@ void turtlesystem::chooseTemplate(int choice)
 void turtlesystem::makeTree()
 {
 
-    Tree.editAlphabet(axiom);
+    m_Tree.editAlphabet(axiom);
     for (int i = 0; i < rules.size(); i++)
     {
-        Tree.addRule(rules[i].first,rules[i].second);
+        m_Tree.addRule(rules[i].first,rules[i].second);
     }
-    Turtle.setAngle(angle);
-    Turtle.setLength(length);
+      m_Turtle.setLSystem(& m_Tree);
+    m_Turtle.setAngle(angle);
+    m_Turtle.setLength(length);
 
 
-    Tree.generateTreeVesions(version+1);
-    Tree.editAlphabet(Tree.getTreeVersion(version));
+    m_Tree.generateTreeVesions(version+1);
+    m_Tree.editAlphabet(m_Tree.getTreeVersion(version));
 
-    Turtle.setLSystem(& Tree);
-    Turtle.setScaleFactor(scaleFactor);
-    std::cout<<"Trees name is " + name + "\nTurtle is following this code:\n" +Tree.getAlphabet() + "\n\n";
 
+    m_Turtle.setLength(length);
+
+    m_Turtle.setScaleFactor(scaleFactor);
+    std::cout<<"Trees name is: " + name + "\n";
+    std::cout<<"With Axiom: " + axiom + "\n";
+    m_Tree.printRules();
+    std::cout<<"Turtle is following this code:\n" +m_Tree.getAlphabet() + "\n\n";
+    name = "Tree Made";
 }
 
 
 void turtlesystem::drawTree()
 {
-Turtle.setLength(length);
-Turtle.runTurtle();
+m_Turtle.setLength(length);
+m_Turtle.runTurtle();
 }
 
 std::string turtlesystem::getName()

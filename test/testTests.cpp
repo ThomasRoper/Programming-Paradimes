@@ -106,12 +106,6 @@ TEST(LSystems,generatingTreeVersions)
     ASSERT_EQ(test.getTreeVersion(3),"ACCCC");
 }
 
-TEST(LSystems,settingAngle)
-{
-    LSystems test;
-    test.setAngle(40.0f);
-    ASSERT_EQ(test.getAngle(),40.0f);
-}
 
 TEST(turtle, runTurtleFoward)
 {
@@ -126,6 +120,20 @@ TEST(turtle, runTurtleFoward)
     tust.runTurtle();
 
     ASSERT_EQ(tust.getMessage(),"moved foward");
+}
+TEST(turtle, runTurtleFowardNotDraw)
+{
+    LSystems test;
+    turtle tust;
+    test.editAlphabet("f");
+    test.addRule('f',"ff");
+    test.editAlphabet(test.applyRules());
+    tust.setAngle(30.0f);
+    tust.setLength(0.5f);
+    tust.setLSystem(& test);
+    tust.runTurtle();
+
+    ASSERT_EQ(tust.getMessage(),"moved foward without drawing");
 }
 TEST(turtle, runTurtleRotatePos)
 {
@@ -153,6 +161,45 @@ TEST(turtle, runTurtleRotateNeg)
     tust.runTurtle();
     ASSERT_EQ(tust.getMessage(),"rotated to the left");
 }
+TEST(turtle, flipRotate)
+{
+    LSystems test;
+    turtle tust;
+    test.editAlphabet("|");
+    test.addRule('|',"||");
+    test.editAlphabet(test.applyRules());
+    tust.setAngle(30.0f);
+    tust.setLength(0.5f);
+    tust.setLSystem(& test);
+    tust.runTurtle();
+    ASSERT_EQ(tust.getMessage(),"reverses the current rotation direction");
+}
+TEST(turtle, scaleLengthPos)
+{
+    LSystems test;
+    turtle tust;
+    test.editAlphabet(">");
+    test.addRule('>',">>");
+    test.editAlphabet(test.applyRules());
+    tust.setAngle(30.0f);
+    tust.setLength(0.5f);
+    tust.setLSystem(& test);
+    tust.runTurtle();
+    ASSERT_EQ(tust.getMessage(),"Multiply the line length by scaler");
+}
+TEST(turtle, scaleLengthNeg)
+{
+    LSystems test;
+    turtle tust;
+    test.editAlphabet("<");
+    test.addRule('<',"<<");
+    test.editAlphabet(test.applyRules());
+    tust.setAngle(30.0f);
+    tust.setLength(0.5f);
+    tust.setLSystem(& test);
+    tust.runTurtle();
+    ASSERT_EQ(tust.getMessage(),"Divide the line length by scaler");
+}
 TEST(turtle, runTurtlePush)
 {
     LSystems test;
@@ -160,26 +207,47 @@ TEST(turtle, runTurtlePush)
     test.editAlphabet("[");
     test.addRule('[',"[[");
     test.editAlphabet(test.applyRules());
+
     tust.setAngle(30.0f);
     tust.setLength(0.5f);
     tust.setLSystem(& test);
     tust.runTurtle();
+
     ASSERT_EQ(tust.getMessage(),"pushs current transforms");
-}
+}/*
 TEST(turtle, runTurtlePop)
 {
     LSystems test;
-
     turtle tust;
+
     test.editAlphabet("]");
     test.addRule(']',"]]");
     test.editAlphabet(test.applyRules());
+
     tust.setAngle(30.0f);
     tust.setLength(0.5f);
     tust.setLSystem(& test);
     tust.runTurtle();
+
     ASSERT_EQ(tust.getMessage(),"pops current transforms");
+}*/
+TEST(turtle, outOfLimitsSymbol)
+{
+    LSystems test;
+    turtle tust;
+    test.editAlphabet("F");
+    test.addRule('F',"#");
+    test.editAlphabet(test.applyRules());
+
+    tust.setAngle(30.0f);
+    tust.setLength(0.5f);
+    tust.setLSystem(& test);
+    tust.runTurtle();
+
+    ASSERT_EQ(tust.getMessage(),"couldn't find character to match: #");
 }
+
+
 TEST(turtlesystem, construct)
 {
     turtlesystem test;
@@ -191,7 +259,7 @@ TEST(turtlesystem, constructAndChoose)
     turtlesystem test;
     test.chooseTemplate(1);
     std::string name = test.getName();
-    ASSERT_EQ(name,"Square_Tree");
+    ASSERT_EQ(name,"Wavy Bush");
 }
 
 
@@ -200,5 +268,5 @@ TEST(turtlesystem, MakeTree)
     turtlesystem test;
     test.chooseTemplate(1);
     test.makeTree();
-    ASSERT_EQ(test.getName(),"Tasic_Tree");
+    ASSERT_EQ(test.getName(),"Tree Made");
 }
