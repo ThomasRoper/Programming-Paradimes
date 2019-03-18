@@ -1,1 +1,8 @@
-# Programming-Paradimes
+#### Programming-Paradimes
+# Lsystems
+### Build
+Open LibAll.pro using qt. Pressing play will run the GL demo program which shows off the libruary.
+In Gl, In the GLWidget function the init and paint functions draw the trees. editing tree.chooseTemplate("your choice"); in the initializeGL function with a number between 0 and 17 will make a premade tree from the LSystems Manual @http://paulbourke.net/fractals/lsys/. Otherwise you can make your own tree by constructing a LSystem, adding a axiom and some rules, then constructing a Turtle to run over the alphabet you have created. note you must apply you rules to your axiom a before this either using the applyRules() function or the generateTreeVesions(int _numOfVersions); function followed by getTreeVersion(int _version){return m_treeVersions[_version];}.
+### Small Report
+My aim was to make a dynamic Library from the ground up on the topic of LSystems using test driven development. My tests initally went well with the lsystems class but i struggled with the others as ASSERT_EQ was the only test I grasped and the other classes were less easy to do comparasons. All of my tests compile but one crashes the subsequent tests so I comented it out (I think its something to do with m_scale?). The libray consists of 3 classes: Lsystem, turtle and Turtlesystem. Lsystem deals with the axiom, alphabet and the rules to generate the code for the turtle class to read and then draw. Turtlesystem is the managing class which cuts out and automates alot of the input into the other classes allowing for simpler ways to create a tree. Overall I think this assignment went well but i wish i could have added more cases to read for 2d like "{","}","(",")" and add in 3d.
+
