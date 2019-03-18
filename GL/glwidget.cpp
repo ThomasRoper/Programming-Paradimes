@@ -46,7 +46,7 @@ void GLWidget::initializeGL()
     */
 
 
-    tree.chooseTemplate(16);
+    tree.chooseTemplate(17);
     tree.makeTree();
 
 
@@ -71,7 +71,7 @@ void GLWidget::paintGL()
         glVertex3f(-1.0, -1.0, 1.0);
         glVertex3f( 1.0, -1.0, 1.0);
     glEnd();*/
-    glRotatef(0.3, 0.0,0.1,0.0);
+    glRotatef(0.003, 0.0,0.1,0.0);
 
 
     glPushMatrix();
